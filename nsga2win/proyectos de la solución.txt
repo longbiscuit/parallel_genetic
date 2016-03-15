@@ -1,0 +1,22 @@
+Solución: NSGA2
+===============
+
+
+Proyectos:
+
+
+nsga2win: Interfaz de usuario y gráficas
+
+nsga2lib: 
+ Algoritmo genético, Procesamiento multi-hilo, generador aleatorio
+ Interfaz "IProblemModel" para modelo de problema
+
+nsga2cmd: Prueba linea de comandos
+
+
+LayoutModelLib: Modelo para la distribución en planta
+
+
+GeneticModelExamplesLib
+ Ejemplo: Viajante andalucia mono-objetivo
+ public class ViajanteAndalucia : IProblemModel

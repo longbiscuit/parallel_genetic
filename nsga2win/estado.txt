@@ -1,0 +1,68 @@
+﻿
+NSGA2 aplicado a Distribución en Planta
+---------------------------------------
+
+
+
+
+Estado:
+
+* Hemos implementado un algoritmo genético mono-objetivo para ajustar inicialmente las diferentes funciones.
+  (Ver GeneticAlgorithm.cs)
+
+* Para éste hemos implemenetado a su vez el problema del viajante.
+  (Ver ViajanteAndalucia.cs)
+
+* Existen proyectos separados: para el algoritmo, el problema, y el interfaz de usuario.
+
+* El interfaz permite parametrizar cualquier aspecto del algoritmo
+
+* A traves del interfaz podemos monitorizar multitud de parámetros y gráficas en tiempo real, así como
+  realizar comparaciones entre varias pruebas con diferentes parámetros.
+  Ha sido necesario implementar este nivel de detalle para ir encontrando y solucionando los problemas
+  que han ido surgiendo.
+
+  Compruebe la pestaña "Gráficas" para ver detalles adicionales durante la ejecución.
+  
+* El interfaz siempre corre en un hilo diferente al algoritmo.
+
+* Los botones de "pausa" y "detener" tiene funcionalidad parcial.
+
+* El algoritmo puede ser lanzado en version no-paralela, o paralela; así como elegir el número de hilos
+  simultaneos a crear para esta última.
+  (Ver GeneticWorkersManager.cs y GeneticWorker.cs)
+  
+* En caso de utilizar la versión paralela, cada uno de los diferentes pasos se realizará de forma paralea
+  por el número de hilos indicados. Éstos siempre que sea necesario acceden a subconjuntos de individuos 
+  aislados para cada hilo, evitando tener que utilizar "locks".
+  
+* Se han implementado ya de forma paralela: los cruces, mutación y evaluación.
+  
+* Dada que la evaluación es una operación sencilla en este ejemplo, y aunque las operaciones implementadas
+  no requieren "locks", no apreciamos una considerable mejora de rendimiento en el caso paralelo. El acceso
+  a memoria sería el cuello de botella. Pensamos que cuando implementemos la ordenación y el mezclado paralelo,
+  así como dotar a cada hilo de su propio generador de números aleatorios (ahora acceden al mismo a través de
+  un "lock"), notaremos una verdadera mejora del rendimiento.
+
+
+Pendiente:
+
+* Terminar de programar botones "pausa" y "detener"
+
+* Dotar a cada hilo de su propio generador de números aleatorios
+
+* Implementar los procedimientos paralelos restantes: ordenación, mezcla.
+
+* Añadir las monitorizaciones que sean necesarias, por ejemplo, uso de CPU/Nucleos, FLOPS, etc.
+
+* Implementar carga y guardado de las opciones del problema a disco.
+
+* Implementar el algoritmo multiobjetivo NSGA-2
+
+* Implementar como problema la distribución en planta
+
+
+
+
+
+
